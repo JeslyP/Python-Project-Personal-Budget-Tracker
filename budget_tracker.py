@@ -1,31 +1,30 @@
-import matplotlib as plt
-from matplotlib import category
+import matplotlib.pyplot as plt
     
 def input_income():
     return float(input ("Enter the amount of your monthly income: "))
 
 
 def input_expenses():
-    expenses  = []
-    category = ['Transportation', 'Food', 'Utilities', 'Entertainment', 'Miscellaneous']
-    for catrgory in category:
-        expenses.append(float(input(f"Enter the amount you spend on {category}: ")))
-        return expenses
+    expenses = {}
+    categories = ['Transportation', 'Food', 'Utilities', 'Entertainment', 'Miscellaneous']
+    for category in categories:
+        expenses[category] = float(input(f"Enter the amount you spend on {category}: "))
+    return expenses
     
 def calculate_budget(income, expenses):
-    total_expenses = sum(expenses)
+    total_expenses = sum(expenses.values())
     balance = income - total_expenses
     return balance
 
-def display_spending(expenses)
+def display_spending(expenses):
     labels = expenses.keys()
     sizes = expenses.values()
 
     fig1, ax1 = plt.subplots()
     ax1.pie(sizes, labels=labels, autopct='%1.1f%%',
             shadow=True, startangle=90)
-    ax1.axis('equal') # Equal aspect ratio ensures that pie is drawn as a circle.
-    plt.title("Monthly Expenses Distruibution")
+    ax1.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
+    plt.title("Monthly Expenses Distribution")
     plt.show()
 
 
